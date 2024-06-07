@@ -9,10 +9,14 @@ import com.gf.entities.User;
 
 /**
  *
- * @author Ares
+ * @author margalal, pinfersa, olimarno
+ * 
+ * Archivo de lógica, UserService. 
+ * Es llamado por controlador.
+ * 
+ * Contiene el método para verificar los campos y
+ * llama al UserDAO para añadir al usuario.
  */
-
-
 
 public class UserService {
     private UserDAO userDao;
