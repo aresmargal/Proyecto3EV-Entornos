@@ -6,9 +6,9 @@ package com.gf.entities;
 
 /**
  *
- * @author Ares
+ * @author margalal, pinfersa, olimarno
  * 
- * Entidad usuario para crear los diferentes tipos de usuarios
+ * Clase usuario.
  */
 public class User {
     private String nombre;
@@ -73,7 +73,6 @@ public class User {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-    
+    }  
     
 }
