@@ -12,7 +12,15 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Ares
+ * @author margalal, pinfersa, olimarno
+ * 
+ * UserDAO. 
+ * LLama al DatabaseConfig.
+ * 
+ * Contiene métodos para añadir al usuario a la base de datos (addUser) y 
+ * para encontrar el DNI en la base de datos para comprobar su 
+ * existencia (encontrarDNI).
+ * 
  */
 public class UserDAO {
 

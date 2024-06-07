@@ -11,7 +11,10 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Ares
+ * @author margalal, pinfersa, olimarno
+ * 
+ * Configuración para el acceso a la base de datos. 
+ * Es llamado por el UserDAO.
  */
 public class DatabaseConfig {
     
