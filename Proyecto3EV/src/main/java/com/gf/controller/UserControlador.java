@@ -11,7 +11,12 @@ import com.gf.logic.UserService;
 
 /**
  *
- * @author Ares
+ * @author margalal, pinfersa, olimarno
+ * 
+ * Controlador del usuario, llamado por el Main.
+ * 
+ * Contiene métodos para mostrar las ventanas/vistas (JFrames) y
+ * llama a la lógica (UserService) para añadir al usuario.
  */
 public class UserControlador {
 
@@ -34,7 +39,5 @@ public class UserControlador {
     public void addUser(String name, String DNI, int numBusca) {
         User user = new User(name, DNI, 0);
             userService.addUser(user);
-            // Mostrar mensaje de éxito o redirigir a una vista de éxito
-        
     }
 }
