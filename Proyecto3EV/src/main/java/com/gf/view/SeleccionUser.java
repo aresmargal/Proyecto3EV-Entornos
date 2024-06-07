@@ -8,7 +8,7 @@ import com.gf.controller.UserControlador;
 
 /**
  *
- * @author Ares
+ * @author margalal, pinfersa, olimarno
  */
 public class SeleccionUser extends javax.swing.JFrame {
        private UserControlador controlador; 

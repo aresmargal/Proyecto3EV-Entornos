@@ -5,19 +5,11 @@
 package com.gf.view;
 
 import com.gf.controller.UserControlador;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
 
 /**
  *
- * @author margalal
+ * @author margalal, pinfersa, olimarno
+ * Añadir la información del usuario
  */
 public class AddUser extends javax.swing.JFrame {
 
@@ -37,7 +29,6 @@ public class AddUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
