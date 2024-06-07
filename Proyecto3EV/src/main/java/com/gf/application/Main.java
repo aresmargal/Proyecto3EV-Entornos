@@ -8,7 +8,9 @@ import com.gf.controller.UserControlador;
 
 /**
  *
- * @author Ares
+ * @author margalal, pinfersa, olimarno
+ * 
+ * Archivo Main. Llama al controlador, ubicado en com.gf.UserControlador
  */
 public class Main {
     public static void main(String[] args) {
