@@ -4,16 +4,20 @@
  */
 package com.gf.view;
 
+import com.gf.controller.UserControlador;
+
 /**
  *
  * @author Ares
  */
 public class SeleccionUser extends javax.swing.JFrame {
-
+       private UserControlador controlador; 
+    
     /**
      * Creates new form SeleccionUser
      */
-    public SeleccionUser() {
+    public SeleccionUser(UserControlador controlador) {
+        this.controlador = controlador; 
         initComponents();
     }
 
@@ -26,17 +30,52 @@ public class SeleccionUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonMedico = new javax.swing.JButton();
+        jButtonEnfermero = new javax.swing.JButton();
+        jButtonAdmin = new javax.swing.JButton();
+        jButtonSupervisor = new javax.swing.JButton();
+        jButtonPaciente = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButtonMedico.setText("jButton1");
+
+        jButtonEnfermero.setText("jButton2");
+
+        jButtonAdmin.setText("jButton3");
+
+        jButtonSupervisor.setText("jButton4");
+
+        jButtonPaciente.setText("jButton5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonMedico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEnfermero)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonSupervisor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonPaciente)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMedico)
+                    .addComponent(jButtonEnfermero)
+                    .addComponent(jButtonAdmin)
+                    .addComponent(jButtonSupervisor)
+                    .addComponent(jButtonPaciente))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         pack();
@@ -72,11 +111,16 @@ public class SeleccionUser extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SeleccionUser().setVisible(true);
+//                new SeleccionUser().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAdmin;
+    private javax.swing.JButton jButtonEnfermero;
+    private javax.swing.JButton jButtonMedico;
+    private javax.swing.JButton jButtonPaciente;
+    private javax.swing.JButton jButtonSupervisor;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@
  */
 package com.gf.view;
 
+import com.gf.controller.UserControlador;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
@@ -20,15 +21,15 @@ import javax.swing.JPanel;
  */
 public class AddUser extends javax.swing.JFrame {
 
+    private UserControlador controlador; 
     /**
      * Creates new form AnyadirUsuario
      */
-    public AddUser() {
+    public AddUser(UserControlador controlador) {
+        this.controlador = controlador; 
         initComponents();
         jLabel2.setText("prueba");
         setFrame();
-
-
     }
 
     private void setFrame() {
@@ -36,6 +37,7 @@ public class AddUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,10 +200,11 @@ public class AddUser extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new AddUser().setVisible(true);
+//                new AddUser().setVisible(true);
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
