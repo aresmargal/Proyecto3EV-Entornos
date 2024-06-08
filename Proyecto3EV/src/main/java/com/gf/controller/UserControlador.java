@@ -6,8 +6,8 @@ package com.gf.controller;
 
 import com.gf.entities.User;
 import com.gf.view.AddUser;
-import com.gf.view.SeleccionUser;
 import com.gf.logic.UserService;
+import com.gf.view.SeleccionUser;
 
 /**
  *
@@ -26,14 +26,14 @@ public class UserControlador {
         this.userService = new UserService();
     }
     
-    public void mostrarAddUser(){
-        AddUser addUser = new AddUser(this);
-        addUser.setVisible(true);
-    }
-
     public void mostrarSeleccionUser(){
         SeleccionUser seleccionUser = new SeleccionUser(this);
         seleccionUser.setVisible(true);
+    }
+    
+    public void mostrarAddUser(String tipo){
+        AddUser addUser = new AddUser(this, tipo);
+        addUser.setVisible(true);
     }
     
     public void addUser(String name, String DNI, int numBusca) {
