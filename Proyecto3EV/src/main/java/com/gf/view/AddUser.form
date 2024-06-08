@@ -68,7 +68,7 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="jButtonSalir" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonAceptar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jTextFieldDNI" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextFieldNumBusca" alignment="1" max="32767" attributes="0"/>
@@ -122,7 +122,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonOtroUser" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -196,12 +196,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jButtonAceptar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Aceptar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAceptarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSalir">

@@ -54,7 +54,7 @@ public class AddUser extends javax.swing.JFrame {
         jTextFieldNumBusca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        jButtonAceptar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
         jButtonOtroUser = new javax.swing.JButton();
 
@@ -82,10 +82,10 @@ public class AddUser extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonAceptarActionPerformed(evt);
             }
         });
 
@@ -132,7 +132,7 @@ public class AddUser extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButtonSalir)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1))
+                                .addComponent(jButtonAceptar))
                             .addComponent(jTextFieldDNI, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNumBusca)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
@@ -172,7 +172,7 @@ public class AddUser extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonAceptar)
                     .addComponent(jButtonSalir)
                     .addComponent(jButtonOtroUser))
                 .addGap(20, 20, 20))
@@ -183,26 +183,25 @@ public class AddUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         // TODO add your handling code here:
         String dni = jTextFieldDNI.getText();
         String numBusca = jTextFieldNumBusca.getText();
         
         if(filtroDNI(dni) && filtroNumBusca(numBusca)){
             JOptionPane.showMessageDialog(this, "Usuario añadido con éxito.", "Información", JOptionPane.INFORMATION_MESSAGE);
-            jLabel1.setText("");
-            jLabel2.setText("");
-            jLabel3.setText("");
-            jLabel4.setText("");
-            jLabel5.setText("");
-            jLabel6.setText("");
-            jLabel7.setText("");
+            jTextFieldNombre.setText("");
+            jTextField3.setText("");
+            jTextFieldDNI.setText("");
+            jTextFieldNumBusca.setText("");
+            jTextArea1.setText("");
         }else if(filtroDNI(dni) == false){
             JOptionPane.showMessageDialog(this, "El DNI debe tener 8 letras y 1 número.", "Error", JOptionPane.ERROR_MESSAGE);
         }else if (filtroNumBusca(numBusca) == false){
             JOptionPane.showMessageDialog(this, "El Número de busca debe tener 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
@@ -262,7 +261,7 @@ public class AddUser extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonOtroUser;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
