@@ -14,8 +14,7 @@ import com.gf.entities.User;
  * Archivo de lógica, UserService. 
  * Es llamado por controlador.
  * 
- * Contiene el método para verificar los campos y
- * llama al UserDAO para añadir al usuario.
+ * Contiene el método para llamar al UserDAO para añadir al usuario.
  */
 
 public class UserService {
@@ -25,15 +24,7 @@ public class UserService {
         this.userDao = new UserDAO();
     }
 
-
-    public void addUser(User user){
-        if(user.getNombre() == null || user.getNombre().isEmpty()){
-            System.out.println("El campo 'nombre' es necesario");
-        }
-        if(userDao.encontrarDNI(user.getDNI())!= null){
-            System.out.println("Ese DNI ya existe");
-        }
-        
+    public void addUser(User user){ 
         userDao.addUser(user);
     }
 }
