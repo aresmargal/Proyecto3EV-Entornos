@@ -22,8 +22,10 @@ public class DatabaseConfig {
     private static final String user = "root";
     private static final String password = "";
 
+
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, user, password);
+       
     }
 }
 

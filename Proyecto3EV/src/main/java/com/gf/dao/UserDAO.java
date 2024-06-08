@@ -25,26 +25,30 @@ import java.sql.SQLException;
 public class UserDAO {
 
     public void addUser(User user) {
-        String sql = "INSERT INTO users (nombre, apellidos, DNI, numBusca, otros, tipo) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (nombre, apellidos, DNI, numBusca, otros) "
+                + "VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement pst = conn.prepareStatement(sql)) {
+        try (Connection conn = DatabaseConfig.getConnection(); 
+                PreparedStatement pst = conn.prepareStatement(sql)) {
 
-            pst.setString(1, user.getNombre());
+            pst.setString(1, "pruebaNombre");
             pst.setString(2, user.getApellidos());
             pst.setString(3, user.getDNI());
             pst.setInt(4, user.getNumBusca());
             pst.setString(5, user.getOtros());
-            pst.setString(6, user.getTipo());
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (e.getSQLState().equals("23000")) { 
+                throw new IllegalArgumentException("El DNI ya existe en la base de datos");
+        } else {
+                e.printStackTrace();
+            }
         }
     }
 
     public User encontrarDNI(String DNI) {
-        String sql = "SELECT * FROM users WHERE DNI = ?";
+        String sql = "SELECT * FROM usuarios WHERE DNI = ?";
         User user = null;
 
         try (Connection conn = DatabaseConfig.getConnection(); PreparedStatement pst = conn.prepareStatement(sql)) {
@@ -58,7 +62,6 @@ public class UserDAO {
                     user.setDNI(rs.getString("DNI"));
                     user.setNumBusca(rs.getInt("numBusca"));
                     user.setOtros(rs.getString("otros"));
-                    user.setTipo(rs.getString("tipo"));
                 }
             }
 
