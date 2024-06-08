@@ -5,30 +5,31 @@
 package com.gf.view;
 
 import com.gf.controller.UserControlador;
+import javax.swing.JOptionPane;
+import javax.swing.text.PlainDocument;
 
 /**
  *
- * @author margalal, pinfersa, olimarno
- * Añadir la información del usuario
+ * @author margalal, pinfersa, olimarno Añadir la información del usuario
  */
 public class AddUser extends javax.swing.JFrame {
 
-    private UserControlador controlador; 
+    private UserControlador controlador;
+
     /**
      * Creates new form AnyadirUsuario
      */
-    public AddUser(UserControlador controlador) {
-        this.controlador = controlador; 
+    public AddUser(UserControlador controlador, String tipo) {
+        this.controlador = controlador;
         initComponents();
-        jLabel2.setText("prueba");
-        setFrame();
+        jLabel2.setText(tipo);
+        setFrame(tipo);
     }
 
-    private void setFrame() {
-        this.setTitle("Usuario Administración");
+    private void setFrame(String tipo) {
+        this.setTitle("Añadir " + tipo + " desde usuario Administracion");
         this.setLocationRelativeTo(null);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,15 +49,18 @@ public class AddUser extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldDNI = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldNumBusca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jButtonOtroUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("AÑADIR NUEVO");
@@ -79,8 +83,25 @@ public class AddUser extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+
+        jButtonOtroUser.setText("Añadir otro usuario");
+        jButtonOtroUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOtroUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,7 +119,9 @@ public class AddUser extends javax.swing.JFrame {
                             .addComponent(jLabel7)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel1)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonOtroUser)
+                            .addComponent(jLabel1))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -110,9 +133,9 @@ public class AddUser extends javax.swing.JFrame {
                                 .addComponent(jButtonSalir)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
+                            .addComponent(jTextFieldDNI, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNumBusca)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
                         .addGap(25, 25, 25))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
@@ -138,10 +161,10 @@ public class AddUser extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldNumBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +173,8 @@ public class AddUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButtonSalir))
+                    .addComponent(jButtonSalir)
+                    .addComponent(jButtonOtroUser))
                 .addGap(20, 20, 20))
         );
 
@@ -159,6 +183,46 @@ public class AddUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String dni = jTextFieldDNI.getText();
+        String numBusca = jTextFieldNumBusca.getText();
+        
+        if(filtroDNI(dni) && filtroNumBusca(numBusca)){
+            JOptionPane.showMessageDialog(this, "Usuario añadido con éxito.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            jLabel1.setText("");
+            jLabel2.setText("");
+            jLabel3.setText("");
+            jLabel4.setText("");
+            jLabel5.setText("");
+            jLabel6.setText("");
+            jLabel7.setText("");
+        }else if(filtroDNI(dni) == false){
+            JOptionPane.showMessageDialog(this, "El DNI debe tener 8 letras y 1 número.", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if (filtroNumBusca(numBusca) == false){
+            JOptionPane.showMessageDialog(this, "El Número de busca debe tener 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonOtroUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOtroUserActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        controlador.mostrarSeleccionUser();
+    }//GEN-LAST:event_jButtonOtroUserActionPerformed
+
+    public static boolean filtroDNI(String dni){
+        return dni.matches("\\d{8}[a-zA-Z]");
+    }
+    
+    public static boolean filtroNumBusca(String numBusca){
+        return numBusca.matches("\\d{10}");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -195,10 +259,11 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonOtroUser;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -210,10 +275,10 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldNumBusca;
     // End of variables declaration//GEN-END:variables
 
 }
