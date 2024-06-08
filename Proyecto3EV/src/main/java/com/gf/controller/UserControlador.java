@@ -4,7 +4,6 @@
  */
 package com.gf.controller;
 
-import com.gf.entities.User;
 import com.gf.view.AddUser;
 import com.gf.logic.UserService;
 import com.gf.view.SeleccionUser;
@@ -15,8 +14,7 @@ import com.gf.view.SeleccionUser;
  * 
  * Controlador del usuario, llamado por el Main.
  * 
- * Contiene métodos para mostrar las ventanas/vistas (JFrames) y
- * llama a la lógica (UserService) para añadir al usuario.
+ * Contiene métodos para mostrar las ventanas/vistas (JFrames)
  */
 public class UserControlador {
 
@@ -34,10 +32,7 @@ public class UserControlador {
     public void mostrarAddUser(String tipo){
         AddUser addUser = new AddUser(this, tipo);
         addUser.setVisible(true);
+
     }
-    
-    public void addUser(String name, String DNI, int numBusca) {
-        User user = new User(name, DNI, 0);
-            userService.addUser(user);
-    }
+
 }
