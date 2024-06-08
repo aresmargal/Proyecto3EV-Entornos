@@ -5,12 +5,13 @@
 package com.gf.view;
 
 import com.gf.controller.UserControlador;
+import com.gf.dao.UserDAO;
+import com.gf.entities.User;
 import javax.swing.JOptionPane;
-import javax.swing.text.PlainDocument;
 
 /**
  *
- * @author margalal, pinfersa, olimarno Añadir la información del usuario
+ * @author margalal, pinfersa, olimarno 
  */
 public class AddUser extends javax.swing.JFrame {
 
@@ -18,6 +19,8 @@ public class AddUser extends javax.swing.JFrame {
 
     /**
      * Creates new form AnyadirUsuario
+     * @param controlador
+     * @param tipo
      */
     public AddUser(UserControlador controlador, String tipo) {
         this.controlador = controlador;
@@ -63,7 +66,7 @@ public class AddUser extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("AÑADIR NUEVO");
+        jLabel1.setText("AÑADIR NUEVO USUARIO:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("jLabel2");
@@ -74,7 +77,7 @@ public class AddUser extends javax.swing.JFrame {
 
         jLabel5.setText("DNI:");
 
-        jLabel6.setText("Nº de busca:");
+        jLabel6.setText("Nº de busca / nº de historial:");
 
         jLabel7.setText("Otros:");
 
@@ -122,9 +125,9 @@ public class AddUser extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonOtroUser)
                             .addComponent(jLabel1))))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField3)
                             .addComponent(jTextFieldNombre)
@@ -135,10 +138,9 @@ public class AddUser extends javax.swing.JFrame {
                                 .addComponent(jButtonAceptar))
                             .addComponent(jTextFieldDNI, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNumBusca)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))
                         .addGap(25, 25, 25))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -186,19 +188,35 @@ public class AddUser extends javax.swing.JFrame {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         // TODO add your handling code here:
         String dni = jTextFieldDNI.getText();
-        String numBusca = jTextFieldNumBusca.getText();
+        String numBuscaString = jTextFieldNumBusca.getText();
         
-        if(filtroDNI(dni) && filtroNumBusca(numBusca)){
+        //comprobación del DNI, numBusca y numHistorial (que se registra en la misma variable)
+        if(filtroDNI(dni) && filtroNumBusca(numBuscaString)){
             JOptionPane.showMessageDialog(this, "Usuario añadido con éxito.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+            //añade al usuario y guarda los campos para añadirse a la base de datos
+            User user = new User();
+            user.setNombre(jTextFieldNombre.getText());
+            user.setApellidos(jTextField3.getText());
+            user.setDNI(dni);
+            int numBuscaInt = Integer.parseInt(numBuscaString);
+            user.setNumBusca(numBuscaInt);
+            user.setOtros(jTextArea1.getText());
+            
+            UserDAO userDAO = new UserDAO();
+            userDAO.addUser(user);
+            
+            //Limpia los campos en caso de crear un usuario del mismo tipo
             jTextFieldNombre.setText("");
             jTextField3.setText("");
             jTextFieldDNI.setText("");
             jTextFieldNumBusca.setText("");
             jTextArea1.setText("");
+            
         }else if(filtroDNI(dni) == false){
-            JOptionPane.showMessageDialog(this, "El DNI debe tener 8 letras y 1 número.", "Error", JOptionPane.ERROR_MESSAGE);
-        }else if (filtroNumBusca(numBusca) == false){
-            JOptionPane.showMessageDialog(this, "El Número de busca debe tener 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El DNI debe tener 8 números y 1 letra.", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if (filtroNumBusca(numBuscaString) == false){
+            JOptionPane.showMessageDialog(this, "El nº de busca/nº de historial de debe tener 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_jButtonAceptarActionPerformed
@@ -215,11 +233,11 @@ public class AddUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOtroUserActionPerformed
 
     public static boolean filtroDNI(String dni){
-        return dni.matches("\\d{8}[a-zA-Z]");
+        return dni.matches("\\d{8}[a-zA-Z]"); //Valida que tenga 8 números y 1 letra
     }
     
     public static boolean filtroNumBusca(String numBusca){
-        return numBusca.matches("\\d{10}");
+        return numBusca.matches("\\d{10}"); //Valida que sean 10 digitos
     }
     
     /**
