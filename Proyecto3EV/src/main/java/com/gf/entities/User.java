@@ -4,6 +4,7 @@
  */
 package com.gf.entities;
 
+
 /**
  *
  * @author margalal, pinfersa, olimarno
@@ -16,15 +17,12 @@ public class User {
     private String DNI;
     private int numBusca;
     private String otros;
-    private String tipo; //administrador, paciente...
 
     public User() {
     }
     
-    public User(String nombre, String DNI, int numBusca) {
-        this.nombre = nombre;
+    public User(String DNI) {
         this.DNI = DNI;
-        this.numBusca = numBusca;
     }
 
     public String getNombre() {
@@ -66,13 +64,5 @@ public class User {
     public void setOtros(String otros) {
         this.otros = otros;
     }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }  
     
 }
